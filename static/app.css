@@ -1,5 +1,11 @@
 img {
     height: 200px;
     width: 200px;
-    display: inline;
+    display: inline-block;
+}
+
+#delete-button{
+    box-sizing: border-box;
+    display: inline-block;
+    width: 300px;
 }

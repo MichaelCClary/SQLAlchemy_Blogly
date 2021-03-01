@@ -3,24 +3,24 @@
 
 {% block content%}
 <div class="container">
-    <h1>Create A User</h1>
-    <form action="/users/new" method="POST">
+    <h1>Edit A User</h1>
+    <form action="/users/{{user.id}}/edit" method="POST">
         <div class="form-group">
             <label for="first_name">First Name</label>
-            <input type="text" id="first_name" name="first_name" placeholder="John" class="form-control" required>
+            <input type="text" id="first_name" name="first_name" value="{{user.first_name}}" class="form-control"
+                required>
         </div>
         <div class="form-group">
             <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Doe" class="form-control" required>
+            <input type="text" id="last_name" name="last_name" value="{{user.last_name}}" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="image_url">Image URL</label>
             <input type="text" id="image_url" name="image_url" class="form-control"
                 placeholder="A link to your profile picture">
         </div>
-        <a href="/users"><button class="btn btn-secondary" type="button">Cancel</button></a>
+        <a href="/users/{{user.id}}"><button class="btn btn-secondary" type="button">Cancel</button></a>
         <button class="btn btn-primary">Save</button>
     </form>
 </div>
-
 {% endblock %}
