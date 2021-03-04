@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+
+{% block content%}
+<h1>Blogly Lastest Posts</h1>
+
+<a href="/users"><button class="btn btn-primary">All Users</button></a>
+<a href="/tags"><button class="btn btn-primary">All Tags</button></a>
+{% for post in posts %}
+
+<h2><a href="/posts/{{post.id}}">{{post.title}}</a></h2>
+
+<p>{{post.content}}</p>
+
+<h3> By <a href="users/{{post.user.id}}">{{post.user.first_name}} {{post.user.last_name}}</a></h3>
+
+<p>Tags:
+    {% for tag in post.tags %}
+    <span class="badge bg-primary text-light rounded-pill">{{tag.name}}</span>
+    {% endfor%}
+</p>
+{% endfor%}
+
+{% endblock %}

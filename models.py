@@ -46,6 +46,33 @@ class Post(db.Model):
 
     user = db.relationship('User', backref='posts')
 
+    tags = db.relationship('Tag', secondary="post_tags",
+                           backref="posts", cascade="delete")
+
     def __repr__(self):
         p = self
         return f"<id={p.id} title={p.title} content={p.content} user_id={p.user_id}>"
+
+
+class Tag(db.Model):
+
+    __tablename__ = "tags"
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    name = db.Column(db.String(40), nullable=False, unique=True)
+
+    def __repr__(self):
+        t = self
+        return f"<id={t.id} name={t.name}>"
+
+
+class PostTag(db.Model):
+
+    __tablename__ = "post_tags"
+
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        "posts.id", ondelete="CASCADE"), primary_key="True")
+
+    tag_id = db.Column(db.Integer, db.ForeignKey(
+        "tags.id", ondelete="CASCADE"), primary_key="True")

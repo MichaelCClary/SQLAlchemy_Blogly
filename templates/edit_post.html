@@ -14,6 +14,13 @@
             <textarea id="content" name="content" rows="8" cols="50" class="form-control"
                 required> {{post.content}}</textarea>
         </div>
+        <div class="form-check">
+            {% for tag in tags %}
+            <input type="checkbox" id="{{tag.name}}" name="tags" value="{{tag.id}}" class="form-check-input">
+            <label for="{{tag.name}}" class="form-check-label">{{tag.name}}</label>
+            <br>
+            {% endfor%}
+        </div>
         <a href="/users/{{post.user.id}}"><button class="btn btn-secondary" type="button">Cancel</button></a>
         <button class="btn btn-primary">Save</button>
     </form>

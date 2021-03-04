@@ -2,13 +2,20 @@
 
 
 {% block content%}
+<a href="/"><button class="btn btn-secondary">Home</button></a>
+
 <h1>{{post.title}}</h1>
 
 <p>{{post.content}}</p>
 
 <h3> By {{post.user.first_name}} {{post.user.last_name}}</h3>
 
-<a href="/users/{{post.user.id}}"><button class="btn btn-secondary">Cancel</button></a>
+<h4>Tags:
+    {% for tag in post.tags %}
+    <span class="badge bg-primary text-light rounded-pill">{{tag.name}}</span>
+    {% endfor%}
+</h4>
+<a href="/users/{{post.user.id}}"><button class="btn btn-secondary">Back to User</button></a>
 <a href="/posts/{{post.id}}/edit"><button class="btn btn-primary">Edit</button></a>
 <form action="/posts/{{post.id}}/delete" method="POST" id="delete-button">
     <button class="btn btn-danger">Delete</button>
